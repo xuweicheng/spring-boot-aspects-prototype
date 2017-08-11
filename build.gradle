@@ -19,6 +19,10 @@ repositories {
     mavenCentral()
 }
 
+configurations{
+    findInstrument
+}
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
     }
@@ -48,15 +52,30 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
+
+
+    findInstrument "org.springframework:spring-instrument:4.3.6.RELEASE"
 }
+
+println configurations.runtime.filter {it.name.contains("spring-instrument")};
+
+task copyInstrument(type: Copy) {
+    from configurations.findInstrument {
+        into('build')
+    }
+}
+
+bootRun.dependsOn copyInstrument
 
 bootRun {
     jvmArgs = [
-            '-javaagent:' + projectDir + '/spring-instrument-4.3.6.RELEASE.jar'
+            '-javaagent:' + projectDir + '/build/spring-instrument-4.3.6.RELEASE.jar'
     ]
 }
-test.doFirst {
-    jvmArgs = [
-            '-javaagent:' + projectDir + '/spring-instrument-4.3.6.RELEASE.jar'
-    ]
+test{
+    doFirst {
+        jvmArgs = [
+                '-javaagent:' + projectDir + '/build/spring-instrument-4.3.6.RELEASE.jar'
+        ]
+    }
 }

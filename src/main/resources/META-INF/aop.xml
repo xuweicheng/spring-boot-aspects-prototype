@@ -3,7 +3,7 @@
         <aspect name="com.weicheng.domain.rules.TeamNameCanNotBeFIFA" />
     </aspects>
 
-    <weaver options="-verbose -showWeaveInfo -Xreweavable -Xset:weaveJavaxPackages=true">
+    <weaver options="-verbose -showWeaveInfo">
         <include within="com.weicheng.domain.Team" />
         <include within="com.weicheng.domain.rules.TeamNameCanNotBeFIFA" />
     </weaver>
