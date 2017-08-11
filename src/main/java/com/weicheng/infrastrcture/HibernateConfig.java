@@ -68,8 +68,8 @@ public class HibernateConfig
         config.addDataSourceProperty("serverName", "127.0.0.1");
         config.addDataSourceProperty("portNumber", "5432");
         config.addDataSourceProperty("databaseName", "spring-boot-aspects-prototype");
-        config.addDataSourceProperty("user", "postgres");
-        config.addDataSourceProperty("password", "Test2010!");
+        config.addDataSourceProperty("user", "db-user");
+        config.addDataSourceProperty("password", "db-password");
 
         HikariDataSource hds = new HikariDataSource(config);
         return hds;
