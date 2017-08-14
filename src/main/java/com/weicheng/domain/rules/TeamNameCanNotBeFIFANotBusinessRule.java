@@ -10,8 +10,8 @@ import org.springframework.core.annotation.Order;
  * Created by Weicheng on 8/10/2017.
  */
 @Aspect
-//@Order(2) order doesn't work when LTW two aspects to one pointcut
-public class TeamNameCanNotBeFIFA extends BusinessRule
+//@Order(3) order doesn't work when LTW two aspects to one pointcut
+public class TeamNameCanNotBeFIFANotBusinessRule
 {
     @Before("execution(* com.weicheng.domain.Team.changeName(String))")
     public void check(JoinPoint joinPoint) throws Throwable

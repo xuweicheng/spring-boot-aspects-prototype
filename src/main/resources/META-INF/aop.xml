@@ -1,10 +1,24 @@
 <aspectj>
     <aspects>
+        <!--Point to a specific aspect works-->
         <aspect name="com.weicheng.domain.rules.TeamNameCanNotBeFIFA" />
+
+        <!--Can NOT weave two aspects to one pointcut,
+            only the latter TeamNameCanNotBeFIFANotBusinessRule is executed,
+            NOT even you include -Xreweavable in the following weaver options-->
+        <!--<aspect name="com.weicheng.domain.rules.TeamNameCanNotBeFIFA" />-->
+        <!--<aspect name="com.weicheng.domain.rules.TeamNameCanNotBeFIFANotBusinessRule" />-->
+
+        <!--aspect tag does NOT work with type pattern-->
+        <!--<aspect name="com.weicheng.infrastrcture.BusinessRule+" />-->
+
+        <!--include tag ONLY filters the above declared aspects
+        this tag does NOT work without individual aspect tag above-->
+        <include within="com.weicheng.infrastrcture.BusinessRule+" />
     </aspects>
 
+    <!--The following is not necessary-->
     <weaver options="-verbose -showWeaveInfo">
-        <include within="com.weicheng.domain.Team" />
-        <include within="com.weicheng.domain.rules.TeamNameCanNotBeFIFA" />
+
     </weaver>
 </aspectj>
