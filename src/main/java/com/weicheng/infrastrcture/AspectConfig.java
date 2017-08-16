@@ -18,10 +18,10 @@ public class AspectConfig
 //    The following bean config for the aspect is NOT working with LTW.
 //    According to this post https://stackoverflow.com/questions/30413186/nosuchmethoderror-with-aspectj
 //    An aspect needs to be woven, then aspectOf method is generated for this aspect.
-//    @Bean
-//    public TeamNameCanNotBeFIFA teamNameCanNotBeFIFA()
-//    {
-//        TeamNameCanNotBeFIFA teamNameCanNotBeFIFA = Aspects.aspectOf(TeamNameCanNotBeFIFA.class);
-//        return teamNameCanNotBeFIFA;
-//    }
+    @Bean
+    public TeamNameCanNotBeFIFA teamNameCanNotBeFIFA()
+    {
+        TeamNameCanNotBeFIFA teamNameCanNotBeFIFA = Aspects.aspectOf(TeamNameCanNotBeFIFA.class);
+        return teamNameCanNotBeFIFA;
+    }
 }

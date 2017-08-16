@@ -18,4 +18,7 @@ HTTP Post http://localhost:8080/Team/1/FIFA
 This will throw another BusinessRuleException.
 This rule TeamNameCanNotBeFIFA.java is an aspect weaved to Domain Entity, managed by Hibernate.
 
-
+IntelliJ VM options
+-ea
+-javaagent:aspectjweaver-1.8.10.jar
+-javaagent:spring-instrument-4.3.6.RELEASE.jar
